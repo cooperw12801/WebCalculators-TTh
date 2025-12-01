@@ -80,7 +80,7 @@ public class Fraction implements Comparable<Fraction> {
      */
     @Override
     public String toString() {
-        return toMixedNumber(numerator, denominator);
+        return toMixedNumber();
     }
 
     /**
@@ -159,11 +159,9 @@ public class Fraction implements Comparable<Fraction> {
      *
      * @return a string representation of the fraction as a mixed number
      */
-    public static String toMixedNumber(int a, int b) {
-        Fraction f1 = new Fraction(a, b); // set the Fraction object
-        f1.simplify();
-        int wholeNum = f1.getNumerator() /  f1.getDenominator(); // get the whole number
-        int numerator = f1.getNumerator() % f1.getDenominator(); // get the new numerator
+    public String toMixedNumber() {
+        int wholeNum = this.numerator /  this.denominator; // get the whole number
+        int numerator = this.numerator % this.denominator; // get the new numerator
         String result = "";
 
         // creates a string with or without the fraction depending on if there is one.
@@ -171,9 +169,9 @@ public class Fraction implements Comparable<Fraction> {
             result = wholeNum + "";
         } else {
             if(wholeNum != 0) {
-                result = wholeNum + " " + numerator + "/" + f1.getDenominator();
+                result = wholeNum + " " + numerator + "/" + this.denominator;
             } else {
-                result = numerator + "/" + f1.getDenominator();
+                result = numerator + "/" + this.denominator;
             }
         }
 
